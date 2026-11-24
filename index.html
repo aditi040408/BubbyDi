@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mischief Managed: Happy Birthday Bubby Dii! ⚡ | Dec 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --hogwarts-night: #0b0d17;
+            --gryffindor-red: #740001;
+            --gryffindor-crimson: #ae0001;
+            --gryffindor-gold: #d3a625;
+            --gold-bright: #ffd700;
+            --parchment: #f4e4bc;
+            --parchment-dark: #d9c28c;
+            --ink-brown: #2b1d0e;
+            --patronus-blue: #a2d2ff;
+            --magic-glow: rgba(211, 166, 37, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: radial-gradient(ellipse at top, #1b2238 0%, var(--hogwarts-night) 70%);
+            color: var(--parchment);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><text y='18' font-size='18'>🪄</text></svg>"), auto;
+        }
+
+        /* Magical Floating Candles & Golden Snitches */
+        .magic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-magic {
+            position: absolute;
+            font-size: 22px;
+            opacity: 0;
+            filter: drop-shadow(0 0 8px var(--gold-bright));
+            animation: floatMagic 10s ease-in-out infinite;
+        }
+
+        @keyframes floatMagic {
+            0% {
+                transform: translateY(105vh) translateX(0px) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.85;
+            }
+            50% {
+                transform: translateY(50vh) translateX(25px) scale(1);
+            }
+            80% {
+                opacity: 0.85;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(-15px) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Marauder's Map Entrance Overlay */
+        #marauders-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, #2c1e12 0%, #0d0906 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        #marauders-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .map-crest {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from { filter: drop-shadow(0 0 5px var(--gryffindor-gold)); transform: scale(1); }
+            to { filter: drop-shadow(0 0 25px var(--gold-bright)); transform: scale(1.08); }
+        }
+
+        .map-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.2rem;
+            color: var(--gold-bright);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .map-subtitle {
+            font-size: 1.3rem;
+            color: var(--parchment);
+            font-style: italic;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .solemn-btn {
+            background: linear-gradient(135deg, var(--gryffindor-red), var(--gryffindor-crimson));
+            color: var(--gold-bright);
+            border: 2px solid var(--gryffindor-gold);
+            padding: 16px 36px;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(211, 166, 37, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .solemn-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            background: linear-gradient(135deg, var(--gryffindor-crimson), #9e0000);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hogwarts Letter / Parchment Header Card */
+        .hogwarts-letter {
+            background: linear-gradient(135deg, #f7ebd2 0%, var(--parchment) 50%, #e6d09c 100%);
+            color: var(--ink-brown);
+            border: 3px solid var(--gryffindor-gold);
+            border-radius: 16px;
+            padding: 45px 35px;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 45px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(139, 90, 43, 0.25);
+            position: relative;
+        }
+
+        /* Wax Seal */
+        .wax-seal {
+            width: 68px;
+            height: 68px;
+            background: radial-gradient(circle at 30% 30%, #b80000, #5c0000);
+            border-radius: 50%;
+            margin: -75px auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel Decorative', cursive;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--gold-bright);
+            border: 3px solid #8a0000;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.6), inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .owl-badge {
+            display: inline-block;
+            background: rgba(116, 0, 1, 0.12);
+            color: var(--gryffindor-red);
+            border: 1px solid var(--gryffindor-red);
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .subtitle-quip {
+            color: #6b2d1f;
+            font-weight: 700;
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.7rem;
+            color: var(--gryffindor-red);
+            text-shadow: 1px 1px 0px var(--gryffindor-gold);
+            margin-bottom: 22px;
+            line-height: 1.2;
+        }
+
+        .letter-body {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--ink-brown);
+            max-width: 820px;
+            margin: 0 auto 30px auto;
+            background: rgba(255, 255, 255, 0.35);
+            padding: 28px;
+            border-radius: 12px;
+            border-left: 5px solid var(--gryffindor-red);
+            border-right: 5px solid var(--gryffindor-gold);
+            text-align: left;
+            box-shadow: inset 0 0 15px rgba(139, 90, 43, 0.15);
+            line-height: 1.85;
+        }
+
+        .spell-btn {
+            background: linear-gradient(135deg, var(--gryffindor-red), #4a0000);
+            color: var(--gold-bright);
+            border: 2px solid var(--gryffindor-gold);
+            padding: 14px 32px;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(116, 0, 1, 0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spell-btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 10px 30px rgba(211, 166, 37, 0.7);
+            color: #fff;
+        }
+
+        /* Pensieve Memories Section */
+        .gallery-title {
+            font-family: 'Cinzel Decorative', cursive;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--gold-bright);
+            text-shadow: 0 0 15px rgba(211, 166, 37, 0.5);
+        }
+
+        .gallery-subtitle {
+            text-align: center;
+            font-style: italic;
+            color: var(--patronus-blue);
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-bottom: 55px;
+        }
+
+        /* Hogwarts Moving Portrait Frame */
+        .portrait-card {
+            background: linear-gradient(145deg, #2a1c0e, #1a1108);
+            padding: 16px 16px 22px 16px;
+            border-radius: 12px;
+            border: 3px solid var(--gryffindor-gold);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.7), inset 0 0 15px rgba(211, 166, 37, 0.3);
+            transform: rotate(-1.5deg);
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .portrait-card:nth-child(even) {
+            transform: rotate(1.5deg);
+        }
+
+        .portrait-card:hover {
+            transform: translateY(-10px) rotate(0deg) scale(1.03);
+            box-shadow: 0 18px 35px rgba(211, 166, 37, 0.45);
+            border-color: var(--gold-bright);
+            z-index: 5;
+        }
+
+        .photo-frame {
+            width: 100%;
+            height: 310px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #8c6b23;
+            background: #14101d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .portrait-card:hover .photo-frame img {
+            transform: scale(1.05);
+        }
+
+        .portrait-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.15rem;
+            color: var(--parchment);
+            padding: 0 5px;
+        }
+
+        /* Interactive Spellbook / Spell-Code Console */
+        .spellbook-card {
+            background: linear-gradient(180deg, #161324 0%, #0e0c18 100%);
+            border: 2px solid var(--gryffindor-gold);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 45px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 25px rgba(162, 210, 255, 0.12);
+        }
+
+        .spellbook-header {
+            background: linear-gradient(90deg, var(--gryffindor-red), #3d0000);
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--gryffindor-gold);
+        }
+
+        .spellbook-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .orb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 6px currentColor;
+        }
+        .orb-crimson { background: #ff4d4d; color: #ff4d4d; }
+        .orb-gold { background: #ffd700; color: #ffd700; }
+        .orb-patronus { background: #a2d2ff; color: #a2d2ff; }
+
+        .spellbook-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 0.95rem;
+            color: var(--gold-bright);
+            letter-spacing: 1px;
+        }
+
+        .spellbook-body {
+            padding: 28px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.92rem;
+            line-height: 1.85;
+            color: #e2e8f0;
+        }
+
+        .code-keyword { color: #ff7b72; }
+        .code-func { color: var(--patronus-blue); }
+        .code-str { color: var(--gold-bright); }
+        .code-comment { color: #8b949e; font-style: italic; }
+
+        .spell-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        .wand-btn {
+            background: rgba(211, 166, 37, 0.12);
+            border: 1px solid var(--gryffindor-gold);
+            color: var(--gold-bright);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .wand-btn:hover {
+            background: var(--gryffindor-gold);
+            color: var(--hogwarts-night);
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .patronus-btn {
+            border-color: var(--patronus-blue);
+            color: var(--patronus-blue);
+            background: rgba(162, 210, 255, 0.1);
+        }
+
+        .patronus-btn:hover {
+            background: var(--patronus-blue);
+            color: var(--hogwarts-night);
+            box-shadow: 0 0 20px rgba(162, 210, 255, 0.8);
+        }
+
+        .output-scroll {
+            margin-top: 22px;
+            padding: 18px;
+            background: rgba(244, 228, 188, 0.08);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold-bright);
+            display: none;
+            color: var(--parchment);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            color: var(--parchment-dark);
+            font-size: 1.05rem;
+            border-top: 1px solid rgba(211, 166, 37, 0.2);
+        }
+
+        .mischief-footer {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gryffindor-gold);
+            font-size: 1.15rem;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .hogwarts-letter { padding: 35px 20px; }
+            .letter-body { font-size: 1.15rem; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Marauder's Map Opening Screen -->
+    <div id="marauders-overlay">
+        <div class="map-crest">⚡🦉📜</div>
+        <div class="map-title">The Marauder's Birthday Map</div>
+        <p class="map-subtitle">"Messrs. Moony, Wormtail, Padfoot, and Prongs—along with Dimpu—present a magical birthday scroll for Bubby Dii..."</p>
+        <button class="solemn-btn" onclick="openMap()">🪄 I Solemnly Swear That I Am Up To No Good</button>
+    </div>
+
+    <!-- Floating Candles & Golden Snitches Background -->
+    <div class="magic-bg" id="magicBg"></div>
+
+    <div class="container">
+        <!-- Hogwarts Acceptance & Birthday Letter -->
+        <div class="hogwarts-letter">
+            <div class="wax-seal">H</div>
+            <span class="owl-badge">&lt;owl_post delivered by LILU /&gt;</span>
+            <p class="subtitle-quip">Not much of a techie witch, but magical enough to make my Bubby Dii's day huehuehue ⚡</p>
+            <h1>Happy Birthday Bubby Dii !! ⚡</h1>
+
+            <div class="letter-body">
+                I know I'm not with you today and this might be one of the days where I'm missing you a little extra todayy, and I'm not there to send you handwritten owl letters—so using my <em>ghisa pita</em> Muggle tech skills... kahin toh kaam aaye !! Anyways, a very happy birthday to you didi! Spending time with you is something I will always cherish. You have a way of showing up at times when I really need you the most, and somehow that's your superpower ;) ... May all your days be full of love, magic, and growth. As you say, your energy protects us all—but trust me, if I had that power, I'd use all my magic just to be with you on a random Tuesday on the rooftop, stargazing, having our fav food, and having the time of our life. You are something even the universe can't define, though for me you are my favorite GOBLIN (house-elf level loyal & chaotic!) .... The universe has a way of giving things beautifully, so it gave me you as a sister I never knew I wanted, yet needed the most.
+                <br><br>
+                I really wish I could offer everything that you give me in 2x, but for now I can only send you love and all my warmest energies huihuihui ✨
+            </div>
+
+            <button class="spell-btn" onclick="castLumosMaxima()">
+                <span>✨ Cast Lumos Maxima!</span>
+            </button>
+        </div>
+
+        <!-- Pensieve Memories Gallery -->
+        <h2 class="gallery-title">🔮 The Pensieve of Memories</h2>
+        <p class="gallery-subtitle">"Memories bring back memories, bring back you..."</p>
+        
+        <div class="photo-grid">
+            
+            <!-- Card 1 -->
+            <div class="portrait-card">
+                <div class="photo-frame">
+                    <img id="img1" src="https://i.ibb.co/XfJbT9yr/Whats-App-Image-2026-11-24-at-11-03-10-PM.jpg" alt="Our Favourite Picture">
+                </div>
+                <div class="portrait-caption">Our Favourite Picture Together ⚡💖</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="portrait-card">
+                <div class="photo-frame">
+                    <img id="img2" src="https://i.ibb.co/Fkk84bXG/Whats-App-Image-2026-11-24-at-11-00-06-PM.jpg" alt="Slaying Every Hogwarts House">
+                </div>
+                <div class="portrait-caption">Not you slaying every Hogwarts house 🥰</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="portrait-card">
+                <div class="photo-frame">
+                    <img id="img3" src="https://i.ibb.co/M558tQd4/Whats-App-Image-2026-11-24-at-10-58-46-PM.jpg" alt="Butterbeer & Coffee Time">
+                </div>
+                <div class="portrait-caption">Happie Butterbeer & Coffee Time ✨</div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="portrait-card">
+                <div class="photo-frame">
+                    <img id="img4" src="https://i.ibb.co/NdWTBP17/Whats-App-Image-2026-11-24-at-11-00-51-PM.jpg" alt="The Golden Snitch Sparkling Eyes">
+                </div>
+                <div class="portrait-caption">The Golden Snitch sparkling eyes ✨</div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="portrait-card">
+                <div class="photo-frame">
+                    <img id="img5" src="https://i.ibb.co/YTcmxt7t/Whats-App-Image-2026-11-24-at-10-57-18-PM.jpg" alt="Sisterhood & Unbreakable Vow">
+                </div>
+                <div class="portrait-caption">Sisterhood & Unbreakable Vow 🌲❤️</div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="portrait-card">
+                <div class="photo-frame">
+                    <img id="img6" src="https://i.ibb.co/fLDb0cw/Whats-App-Image-2026-11-24-at-11-02-11-PM.jpg" alt="My Guardian Patronus">
+                </div>
+                <div class="portrait-caption">My Guardian Patronus—missing you today 💕</div>
+            </div>
+
+        </div>
+
+        <!-- Hogwarts Spell-Code Grimoire -->
+        <div class="spellbook-card">
+            <div class="spellbook-header">
+                <div class="spellbook-dots">
+                    <div class="orb orb-crimson"></div>
+                    <div class="orb orb-gold"></div>
+                    <div class="orb orb-patronus"></div>
+                </div>
+                <span class="spellbook-title">📜 Half-Blood_Sister_Spellbook.js</span>
+            </div>
+            <div class="spellbook-body">
+                <div><span class="code-comment">// A secret enchantment brewed specially for my Bubby Dii</span></div>
+                <div><span class="code-keyword">const</span> guardianAngel = {</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;title: <span class="code-str">"Bubby Dii (My Favorite Goblin)"</span>,</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;birthday: <span class="code-str">"3rd December"</span>,</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;hogwartsHouse: <span class="code-str">"Gryffindor Heart & Ravenclaw Wisdom"</span>,</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;superpower: <span class="code-str">"Protective Energy & Showing Up Right On Time"</span>,</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;liluLoveLevel: <span class="code-keyword">Infinity</span></div>
+                <div>};</div>
+                <br>
+                <div><span class="code-keyword">function</span> <span class="code-func">castBirthdayBlessing</span>() {</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-str">"Rooftop stargazing & our fav food loading soon! ⚡❤️"</span>;</div>
+                <div>}</div>
+
+                <div class="spell-buttons">
+                    <button class="wand-btn" onclick="castSpell('miss')">🪄 cast("AccioBubbyDii")</button>
+                    <button class="wand-btn patronus-btn" onclick="castSpell('patronus')">🦌 cast("ExpectoPatronum")</button>
+                    <button class="wand-btn" onclick="castSpell('bday')">🎂 cast("HappyBirthdaySpell")</button>
+                </div>
+
+                <div class="output-scroll" id="spellOutput"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>Handcrafted with ❤️ & Magic by <strong>DIMPU (LILU)</strong> for December 3rd</div>
+        <div class="mischief-footer">✨ Mischief Managed ✨</div>
+    </footer>
+
+    <script>
+        // Marauder's Map Reveal
+        function openMap() {
+            const overlay = document.getElementById('marauders-overlay');
+            overlay.classList.add('hidden');
+            setTimeout(castLumosMaxima, 400);
+        }
+
+        // Floating Hogwarts Candles, Owls & Snitches
+        function createMagicElements() {
+            const container = document.getElementById('magicBg');
+            const icons = ['🕯️', '⚡', '✨', '🦉', '🪄', '🌟'];
+            for (let i = 0; i < 28; i++) {
+                const el = document.createElement('div');
+                el.className = 'floating-magic';
+                el.innerText = icons[Math.floor(Math.random() * icons.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 6 + 7) + 's';
+                el.style.animationDelay = (Math.random() * 6) + 's';
+                container.appendChild(el);
+            }
+        }
+        createMagicElements();
+
+        // Gryffindor Gold & Crimson Confetti
+        function castLumosMaxima() {
+            confetti({
+                particleCount: 130,
+                spread: 85,
+                colors: ['#ffd700', '#d3a625', '#ae0001', '#740001', '#ffffff'],
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Patronus Silver-Blue Burst
+        function castPatronusBurst() {
+            confetti({
+                particleCount: 110,
+                spread: 100,
+                colors: ['#a2d2ff', '#bde0fe', '#ffffff', '#caf0f8'],
+                origin: { y: 0.65 }
+            });
+        }
+
+        // Interactive Wand Commands
+        function castSpell(type) {
+            const output = document.getElementById('spellOutput');
+            output.style.display = 'block';
+            if (type === 'miss') {
+                output.style.borderLeftColor = '#ffd700';
+                output.innerHTML = '⚡ <strong>ACCIO MEMORIES:</strong> Sending 2x love and warm energies to my favorite Goblin! Counting down until our next rooftop stargazing night with our favorite food huihuihui 💖';
+            } else if (type === 'patronus') {
+                output.style.borderLeftColor = '#a2d2ff';
+                output.innerHTML = '🦌 <strong>EXPECTO PATRONUM:</strong> Your Guardian Patronus is glowing! Thank you for always protecting us with your energy and showing up right when I need you most ✨';
+                castPatronusBurst();
+            } else if (type === 'bday') {
+                output.style.borderLeftColor = '#ae0001';
+                output.innerHTML = '🎂 <strong>FELIX FELICIS GRANTED:</strong> Happy Birthday Bubby Dii!! May this year bring you liquid luck, endless growth, and loads of Honeydukes chocolate cakes! 🎉';
+                castLumosMaxima();
+            }
+        }
+    </script>
+</body>
+</html>
